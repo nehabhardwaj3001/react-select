@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
+import ReactSelect from 'react-select';
+import makeAnimated from 'react-select/animated';
+import Select from './components/Select.js';
 import './App.css';
 
 function App() {
+
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]  
+
+  const animatedComponents = makeAnimated();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>React Select</h1>
+      <ReactSelect 
+        options={options} 
+        name="colors"
+        className="basic-multi-select"
+        isMulti
+        defaultValue={[options[0]]}
+        components={animatedComponents}
+      />
+      <div className='ui form'>
+        <h1>Select</h1>
+        <Select options={options}  />
+      </div>
     </div>
   );
 }
